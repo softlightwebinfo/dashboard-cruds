@@ -1,0 +1,16 @@
+.Sidebar-component.Sidebar {
+  background-color: white;
+  border-right: 1px solid gainsboro;
+  width: $WSidebar;
+
+  .Typography-component a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+
+    img {
+      margin-right: 15px;
+    }
+  }
+}

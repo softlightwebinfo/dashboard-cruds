@@ -1,0 +1,10 @@
+.Page {
+  &__content {
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100vh;
+    display: flex;
+  }
+}
