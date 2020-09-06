@@ -1,0 +1,21 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.bannerParse = exports.bannerDeleteRequest = exports.bannerDeleteFailure = exports.bannerDeleteSuccess = exports.bannerUpdateRequest = exports.bannerUpdateFailure = exports.bannerUpdateSuccess = exports.bannerActiveRequest = exports.bannerActiveFailure = exports.bannerActiveSuccess = exports.bannerListRequest = exports.bannerListFailure = exports.bannerListSuccess = exports.bannerRequest = exports.bannerFailure = exports.bannerSuccess = void 0;
+const actionCreators_1 = require("../actionCreators");
+exports.bannerSuccess = () => ({ type: actionCreators_1.bannerType.BANNER_CREATE_SUCCESS });
+exports.bannerFailure = (errorText, error = null) => ({ type: actionCreators_1.bannerType.BANNER_CREATE_FAILURE, errorText, error });
+exports.bannerRequest = (values) => ({ type: actionCreators_1.bannerType.BANNER_CREATE_REQUEST, data: values });
+exports.bannerListSuccess = (data) => ({ type: actionCreators_1.bannerType.BANNER_LIST_SUCCESS, data });
+exports.bannerListFailure = (errorText, error = null) => ({ type: actionCreators_1.bannerType.BANNER_LIST_FAILURE, errorText, error });
+exports.bannerListRequest = () => ({ type: actionCreators_1.bannerType.BANNER_LIST_REQUEST });
+exports.bannerActiveSuccess = (id, active) => ({ type: actionCreators_1.bannerType.BANNER_ACTIVE_SUCCESS, id, active });
+exports.bannerActiveFailure = (errorText, error = null) => ({ type: actionCreators_1.bannerType.BANNER_ACTIVE_FAILURE, errorText, error });
+exports.bannerActiveRequest = (id, active) => ({ type: actionCreators_1.bannerType.BANNER_ACTIVE_REQUEST, id, active });
+exports.bannerUpdateSuccess = (id, data) => ({ type: actionCreators_1.bannerType.BANNER_UPDATE_SUCCESS, id, data });
+exports.bannerUpdateFailure = (errorText, error = null) => ({ type: actionCreators_1.bannerType.BANNER_UPDATE_FAILURE, errorText, error });
+exports.bannerUpdateRequest = (id, values) => ({ type: actionCreators_1.bannerType.BANNER_UPDATE_REQUEST, data: values, id });
+exports.bannerDeleteSuccess = (id, image) => ({ type: actionCreators_1.bannerType.BANNER_DELETE_SUCCESS, id, image });
+exports.bannerDeleteFailure = (errorText, error = null) => ({ type: actionCreators_1.bannerType.BANNER_DELETE_FAILURE, errorText, error });
+exports.bannerDeleteRequest = (id, image) => ({ type: actionCreators_1.bannerType.BANNER_DELETE_REQUEST, id, image });
+exports.bannerParse = (data = false) => ({ type: actionCreators_1.bannerType.BANNER_PARSE, data });
+//# sourceMappingURL=banner.js.map

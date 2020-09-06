@@ -1,0 +1,30 @@
+.Sidebar-component.Sidebar {
+  background-color: white;
+  border-right: 1px solid gainsboro;
+  width: 300px; }
+  .Sidebar-component.Sidebar .Typography-component a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 20px; }
+    .Sidebar-component.Sidebar .Typography-component a img {
+      margin-right: 15px; }
+
+.Header {
+  left: 300px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9; }
+
+.Main {
+  margin-left: 300px;
+  margin-top: 69px; }
+
+.Page__content {
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100vh;
+  display: flex; }
