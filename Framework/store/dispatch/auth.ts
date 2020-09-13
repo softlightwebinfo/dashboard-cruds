@@ -5,12 +5,13 @@ import { takeLatest, put } from 'redux-saga/effects';
 import { authFailure, authInitialRq, authLogout as logout, authRequest, authSuccess } from '../actions/auth';
 import { getApi } from 'settings';
 import { setCookie } from '../../libs/cookie';
+import { TOKEN_EXP } from "@config/constants";
 
 // @ts-ignore
 export const auth = (email: string, password: string) => async (dispatch) => {
   try {
     dispatch(authRequest());
-    const res = await fetch(getApi('user/login'), {
+    const res = await fetch(getApi("login"), {
       body: JSON.stringify({
         email: email,
         password: password,
@@ -22,10 +23,11 @@ export const auth = (email: string, password: string) => async (dispatch) => {
       method: 'POST',
     });
     const response = await res.json();
-    if (response.error) {
+    if (!response.success) {
       dispatch(authFailure(response.error));
     } else {
-      dispatch(authSuccess(response));
+      setCookie('token', response.token, TOKEN_EXP);
+      dispatch(authSuccess(response.user));
     }
   } catch (err) {
     dispatch(authFailure('Error to change language: ', err));
@@ -53,25 +55,26 @@ export const authRegister = (data) => async (dispatch) => {
 };
 
 export const authInitial = (cookie) => async (dispatch) => {
-  dispatch(authSuccess({}));
-  return;
+  // dispatch(authSuccess({}));
+  // return;
   try {
     dispatch(authInitialRq());
-    const res = await fetch(getApi('user/initial'), {
+    const res = await fetch(getApi('initial'), {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         cookie: cookie,
       },
-      method: 'POST',
+      method: 'GET',
     });
     const response = await res.json();
-    if (response.error) {
+    if (!response.success) {
       dispatch(authFailure(response.error));
     } else {
       dispatch(authSuccess(response));
     }
   } catch (err) {
+    console.log(err);
     dispatch(authFailure(err));
   }
 };

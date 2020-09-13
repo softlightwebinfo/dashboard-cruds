@@ -14,6 +14,7 @@ import {
 import { Link } from "@routes";
 import { connect } from "react-redux";
 import { setting } from "@settings";
+import { AddNewProjectContainer } from "../container/AddNewProjectContainer";
 
 export const Sidebar = (props: TSidebarProps) => {
     const {projects = []} = props;
@@ -40,6 +41,7 @@ export const Sidebar = (props: TSidebarProps) => {
                 <section>
                     <ListComponent>
                         <SidebarMenuItemComponent style={{color: "black"}} name={"Navegación proyectos"}/>
+                        {!projects.length && (<AddNewProjectContainer/>)}
                         {projects.map((item) => (
                             <CollapseItemComponent
                                 title={item.name}

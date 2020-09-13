@@ -28,3 +28,87 @@
   flex: 1;
   height: 100vh;
   display: flex; }
+
+.AddNewProject {
+  background-color: white !important;
+  margin: 20px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 3;
+  color: #404040 !important; }
+  .AddNewProject:hover {
+    cursor: pointer;
+    background-color: #eee9e9 !important;
+    color: black !important; }
+
+.Modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px; }
+  .Modal__dialog {
+    background-color: #fff;
+    border-radius: 4px; }
+    .Modal__dialog > header,
+    .Modal__dialog > section,
+    .Modal__dialog > footer {
+      padding-left: 20px;
+      padding-right: 20px; }
+    .Modal__dialog > header {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border: 1px solid gainsboro;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: black; }
+      .Modal__dialog > header svg {
+        color: black; }
+    .Modal__dialog > section {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-color: #f3efef; }
+    .Modal__dialog > footer {
+      display: flex;
+      align-items: center;
+      border-top: 1px solid gainsboro;
+      padding-top: 10px;
+      padding-bottom: 10px; }
+      .Modal__dialog > footer > * + * {
+        margin-left: 10px; }
+
+.Loader {
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite; }
+  .Loader--min {
+    width: 25px;
+    height: 25px;
+    border-width: 3px; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.button-component__children {
+  height: 100%; }
+  .button-component__children .Loader {
+    margin-right: 10px; }

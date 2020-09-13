@@ -6,6 +6,7 @@ import {
     HeaderToolbarComponent,
     IconComponent,
     BEM,
+    MessageAvatarComponent
 } from "@codeunic/library-ui/build";
 
 export const Navbar = (props: TNavbarProps) => {
@@ -22,11 +23,18 @@ export const Navbar = (props: TNavbarProps) => {
                     <span>App: 0.0.1</span>
                 </>
             )}
+            rightAfter={(
+                <MessageAvatarComponent
+                    style={{marginLeft: 20}}
+                    name={"RA"}
+                    title={"rafael.gonzalez.1737@gmail.com"}
+                    subTitle={"Administrador"}
+                />
+            )}
             icons={[
                 <IconComponent style={{color: "black"}} icon="setting"/>,
-                <IconComponent style={{color: "black"}} icon="setting"/>
             ]}
-            onClick={()=>console.log("HOLA")}
+            onClick={() => console.log("HOLA")}
         />
     );
 };

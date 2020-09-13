@@ -14,7 +14,7 @@ class Index extends Component<{
 
     static async getInitialProps(ctx) {
         const {isServer, store} = ctx;
-        await store.dispatch(getProjects());
+        await store.dispatch(getProjects(ctx.req ? ctx.req.headers.cookie : undefined));
         return {
             isServer,
         };

@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Auth } from "../Framework/hoc/Auth";
 import { AuthLoginComponent, CardBoxComponent } from "@codeunic/library-ui/build";
 import { Page } from "@components/Page";
 // @ts-ignore
 import { Router } from "@routes";
+import { auth } from "../Framework/store/dispatch/auth";
 
 class Index extends Component<{
     translation: any;
+    dispatch: any;
+    isLogin: boolean;
 }> {
     public state = {
         search: "",
+        email: "",
+        password: "",
     }
 
     static async getInitialProps(ctx) {
@@ -29,6 +33,13 @@ class Index extends Component<{
         };
     }
 
+    componentDidUpdate(prevProps) {
+        const {isLogin} = this.props;
+        if (!prevProps.isLogin && isLogin) {
+            Router.pushRoute('/');
+        }
+    }
+
     componentDidMount() {
         // @ts-ignore
         const {isServer, translate, isLogin} = this.props;
@@ -38,6 +49,16 @@ class Index extends Component<{
         if (isServer && !translate) {
             //dispatch(ActionCreator.translationRequest("es"));
         }
+    }
+
+    onChange = (evt) => this.setState({[evt.target.id]: evt.target.value})
+
+    submit = (evt) => {
+        evt.preventDefault();
+        if (!this.state.email.length || !this.state.password.length) {
+            return;
+        }
+        this.props.dispatch(auth(this.state.email, this.state.password));
     }
 
     render() {
@@ -50,8 +71,9 @@ class Index extends Component<{
                     image={"/static/images/dashboard.png"}
                 >
                     <AuthLoginComponent
-                        onChange={console.log} textOtherScreen={"Register"} footerAccountText={"Create Account"}
-                        emailValue={""} passwordValue={""} onSubmit={console.log} title={"Login"}
+                        onChange={this.onChange} textOtherScreen={"Register"} footerAccountText={"Create Account"}
+                        emailValue={this.state.email} passwordValue={this.state.password} onSubmit={this.submit}
+                        title={"Login"}
                         subTitle={"Iniciar sesión"}
                     />
                 </CardBoxComponent>
@@ -62,4 +84,5 @@ class Index extends Component<{
 
 export default connect((state: any) => ({
     translation: state.translate.translation,
-}))(Auth(Index));
+    isLogin: state.auth.isLogin,
+}))(Index);

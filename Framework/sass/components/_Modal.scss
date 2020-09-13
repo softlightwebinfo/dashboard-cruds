@@ -1,0 +1,58 @@
+.Modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  &__dialog {
+    background-color: #fff;
+    border-radius: 4px;
+
+    > header,
+    > section,
+    > footer {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    > header {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border: 1px solid gainsboro;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: black;
+
+      svg {
+        color: black;
+      }
+    }
+
+    > section {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-color: #f3efef;
+    }
+
+    > footer {
+      display: flex;
+      align-items: center;
+      border-top: 1px solid gainsboro;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      > * + * {
+        margin-left: 10px;
+      }
+    }
+  }
+}
